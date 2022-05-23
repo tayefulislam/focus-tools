@@ -14,6 +14,7 @@ const Header = () => {
     const manus = <>
         <li><Link to='/myorders'>My Orders</Link></li>
         <li><Link to='/myreviews'>My Reviews</Link></li>
+        <li><Link to='/dashboard'>Dashboard</Link></li>
         {
             user ? <li><button onClick={() => signOut(auth)}>signOut</button></li> : <li><Link to='/login'>Login</Link></li>
         }
