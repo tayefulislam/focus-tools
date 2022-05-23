@@ -10,6 +10,8 @@ import WelcomePage from './Pages/WelcomePage/WelcomePage';
 import AddProduct from './Pages/Dashboard/AddProduct/AddProduct';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Home from './Pages/Home/Home';
+import Purchase from './Pages/UserModules/Purchase/Purchase';
 
 function App() {
 
@@ -20,14 +22,18 @@ function App() {
 
       <Header></Header>
       <Routes>
-        <Route path='signup' element={<Register></Register>}></Route>
-        <Route path='login' element={<Login></Login>}></Route>
+
+        <Route path='/' element={<Home></Home>}></Route>
+        <Route path='/item/:id' element={<Purchase></Purchase>}></Route>
+
         <Route path='dashboard' element={<Dashboard></Dashboard>}>
           <Route index element={<WelcomePage></WelcomePage>}></Route>
           <Route path='addproduct' element={<AddProduct></AddProduct>}></Route>
 
 
         </Route>
+        <Route path='signup' element={<Register></Register>}></Route>
+        <Route path='login' element={<Login></Login>}></Route>
       </Routes>
       <ToastContainer></ToastContainer>
     </div>
