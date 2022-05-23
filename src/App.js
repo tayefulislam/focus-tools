@@ -6,6 +6,7 @@ import Register from './Pages/Home/Register/Register';
 import Login from './Pages/Login/Login';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import MyProfile from './Pages/MyProfile/MyProfile';
+import WelcomePage from './Pages/WelcomePage/WelcomePage';
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
         <Route path='signup' element={<Register></Register>}></Route>
         <Route path='login' element={<Login></Login>}></Route>
         <Route path='dashboard' element={<Dashboard></Dashboard>}>
-          <Route index element={<MyProfile></MyProfile>}></Route>
+          <Route index element={<WelcomePage></WelcomePage>}></Route>
 
 
         </Route>
