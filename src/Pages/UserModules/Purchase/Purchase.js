@@ -6,6 +6,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { set } from 'react-hook-form';
 import axios from 'axios';
+import { signOut } from 'firebase/auth';
 const Purchase = () => {
 
     const { id } = useParams()
@@ -13,7 +14,7 @@ const Purchase = () => {
     const [item, setItem] = useState({});
 
     let [minOrder, setMinOrder] = useState(0);
-    let [total, setTotal] = useState(1);
+    let [total, setTotal] = useState(0);
 
     const [user, loading, error] = useAuthState(auth);
 
@@ -22,8 +23,19 @@ const Purchase = () => {
     useEffect(() => {
 
         const url = `http://localhost:5000/item/${id}`
-        fetch(url)
-            .then(res => res.json())
+        fetch(url, {
+            headers: {
+                authentication: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => {
+                console.log(res)
+                if (res.status === 401 || res.status === 403) {
+                    signOut(auth)
+                    localStorage.removeItem('accessToken')
+                }
+                return res.json()
+            })
             .then(data => {
                 // console.log(data)
                 setItem(data)
@@ -161,7 +173,7 @@ const Purchase = () => {
 
 
         <div class="card w-full bg-base-100 shadow-xl">
-            <figure><img src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" /></figure>
+            <figure><img src={item?.image} alt="Shoes" /></figure>
 
 
             <div class="card-body text-center">
