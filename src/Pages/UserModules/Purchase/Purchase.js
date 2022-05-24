@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { set } from 'react-hook-form';
+import axios from 'axios';
 const Purchase = () => {
 
     const { id } = useParams()
@@ -83,7 +84,7 @@ const Purchase = () => {
         if (!minNumberQuanity) {
             setMinOrder()
             setTotal(0)
-            return toast('Plase Enter an valid number')
+
 
         }
 
@@ -99,9 +100,48 @@ const Purchase = () => {
     }
 
 
-    const handeSubmit = (event) => {
+
+
+
+    const handleSubmit = (event) => {
 
         event.preventDefault()
+
+
+        const order = {
+            orderQuantity: minOrder,
+            userName: user?.displayName,
+            userEmail: user?.email,
+            totalPrice: total,
+            unitPrice: item?.unitPrice,
+            address: event?.target?.address?.value,
+            phoneNumber: event?.target?.phonenumber?.value,
+            itemId: item?._id,
+            date: new Date().toLocaleDateString(),
+            time: new Date().toLocaleTimeString(),
+            status: 'pending'
+
+        }
+
+        console.log(order)
+
+        const url = `http://localhost:5000/order`;
+
+        axios.post(url, order)
+            .then(function (response) {
+                console.log(response);
+
+                if (response.data.insertedId) {
+                    toast('Your Order Success Fully Placed')
+                    event.target.reset()
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+
+            });
+
+
 
 
     }
@@ -156,7 +196,7 @@ const Purchase = () => {
                         <div className='card w-96 bg-gray-200 shadow-xl'>
 
                             <div className='card-body'>
-                                <form onSubmit={handeSubmit} >
+                                <form onSubmit={handleSubmit} >
 
 
                                     <h1 className='text-2xl font-bold'>User Info</h1>
