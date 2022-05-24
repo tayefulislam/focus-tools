@@ -1,8 +1,27 @@
-import React, { useState } from 'react';
-
+import { data } from 'autoprefixer';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useQuery } from 'react-query';
+import { toast } from 'react-toastify';
+import auth from '../../../firebase.init';
 const MyReview = () => {
 
+
     const [rating, setRating] = useState(1);
+
+    const [user, loading, error] = useAuthState(auth);
+
+
+    const url = `http://localhost:5000/myreview/${user?.email}`;
+
+    const { data, refetch } = useQuery('OnlyMyReview', () => fetch(url).then(res => res.json()))
+
+    console.log(data?.rating)
+
+
+
+
 
 
 
@@ -11,9 +30,34 @@ const MyReview = () => {
 
         const review = {
             rating: rating,
-            myReview: event.target.review.value
+            myReview: event.target.review.value,
+            email: user?.email,
+            userName: user?.displayName
         }
         console.log(review)
+
+        const url = `http://localhost:5000/updateReview/${user?.email}`;
+
+        axios.post(url, review)
+
+            .then(function (response) {
+                console.log(response);
+
+                if (response.data.upsertedCount > 0) {
+                    toast.success('Review Added')
+                }
+                if (response.data.modifiedCount > 0) {
+                    toast.success('Review Updated')
+                }
+                if (response.data.matchedCount > 0 && (response.data.modifiedCount === 0 && response.data.upsertedCount === 0)) {
+                    toast.error('Please Change Something to Update')
+                }
+
+                refetch()
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
 
     }
 
@@ -47,10 +91,12 @@ const MyReview = () => {
                     </div>
 
 
-                    <textarea type="text" name='review' placeholder="Your View" class="input input-bordered input-error w-full lg:w-96 max-w-xs mt-4" />
+                    <textarea type="text" name='review' placeholder="Your Review" class="input input-bordered input-error w-full lg:w-96 max-w-xs mt-4" />
                     <br />
 
-                    <input type="submit" className='btn  btn-outline mt-2 w-full max-w-xs ' value='Submit' />
+                    {
+                        data?.myReview ? <input type="submit" className='btn  btn-outline mt-2 w-full max-w-xs ' value='Update Review' /> : <input type="submit" className='btn  btn-outline mt-2 w-full max-w-xs ' value='Submit' />
+                    }
 
 
 
@@ -61,7 +107,33 @@ const MyReview = () => {
 
 
 
+
+
+
             </div>
+
+
+            {
+                data?.rating && <div className='mt-6'>
+                    <h1 className='text-center text-2xl'>My Previous Review</h1>
+
+                    <div className='flex justify-center items-center flex-row'>
+
+                        <div >
+                            <h1 className='text-center text-2xl text-red-500 font-bold' >Rating : {`${data?.rating} / 5`}</h1>
+
+
+                            <p className='text-center text-2xl mx-12'><span className='font-bold'>Review : </span>{data?.myReview}</p>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            }
+
+
+
 
 
         </>
