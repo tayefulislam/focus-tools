@@ -14,6 +14,7 @@ import Home from './Pages/Home/Home';
 import Purchase from './Pages/UserModules/Purchase/Purchase';
 import MyOrders from './Pages/UserModules/MyOrders/MyOrders';
 import MyReview from './Pages/UserModules/MyReview/MyReview';
+import RequireAuth from './Pages/Auth/RequireAuth';
 
 function App() {
 
@@ -26,9 +27,9 @@ function App() {
       <Routes>
 
         <Route path='/' element={<Home></Home>}></Route>
-        <Route path='/item/:id' element={<Purchase></Purchase>}></Route>
+        <Route path='/item/:id' element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>
 
-        <Route path='dashboard' element={<Dashboard></Dashboard>}>
+        <Route path='dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>
           <Route index element={<WelcomePage></WelcomePage>}></Route>
           <Route path='addproduct' element={<AddProduct></AddProduct>}></Route>
           <Route path='myoders' element={<MyOrders></MyOrders>}></Route>

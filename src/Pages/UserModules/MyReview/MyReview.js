@@ -15,7 +15,7 @@ const MyReview = () => {
 
     const url = `http://localhost:5000/myreview/${user?.email}`;
 
-    const { data, refetch } = useQuery('OnlyMyReview', () => fetch(url).then(res => res.json()))
+    const { data, isLoading, refetch } = useQuery('OnlyMyReview', () => fetch(url).then(res => res.json()))
 
     console.log(data?.rating)
 
@@ -91,7 +91,7 @@ const MyReview = () => {
                     </div>
 
 
-                    <textarea type="text" name='review' placeholder="Your Review" class="input input-bordered input-error w-full lg:w-96 max-w-xs mt-4" />
+                    <textarea type="text" name='review' placeholder="Your Review" defaultValue={data?.myReview} class="input input-bordered input-error w-full lg:w-96 max-w-xs mt-4" />
                     <br />
 
                     {
@@ -114,7 +114,7 @@ const MyReview = () => {
 
 
             {
-                data?.rating && <div className='mt-6'>
+                data?.rating && <div className='mt-6 w-full'>
                     <h1 className='text-center text-2xl'>My Previous Review</h1>
 
                     <div className='flex justify-center items-center flex-row'>
@@ -123,7 +123,9 @@ const MyReview = () => {
                             <h1 className='text-center text-2xl text-red-500 font-bold' >Rating : {`${data?.rating} / 5`}</h1>
 
 
-                            <p className='text-center text-2xl mx-12'><span className='font-bold'>Review : </span>{data?.myReview}</p>
+                            <p className='text-center text-xl  w-full px-2'><span className='font-bold'>Review : </span> {data?.myReview}</p>
+
+
                         </div>
 
                     </div>

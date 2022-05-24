@@ -1,7 +1,7 @@
 import React from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const Login = () => {
@@ -12,6 +12,17 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+
+    let navigate = useNavigate();
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+
+
+
+
+
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
@@ -27,6 +38,11 @@ const Login = () => {
 
     console.log(user)
     console.log(error)
+
+
+    if (user || gUser) {
+        navigate(from, { replace: true });
+    }
 
 
     return (
@@ -121,7 +137,8 @@ const Login = () => {
 
 
 
-                    <button className="btn btn-outline">CONTINUE WITH GOOGLE</button>
+                    <button onClick={() => signInWithGoogle()} className="btn btn-outline">CONTINUE WITH GOOGLE</button>
+
                     <button className="btn btn-outline">CONTINUE WITH GITHUB</button>
 
                     {/* <button onClick={() => signInWithGoogle()} className="btn btn-outline">CONTINUE WITH GOOGLE</button> */}
