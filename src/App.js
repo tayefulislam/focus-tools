@@ -13,6 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Home from './Pages/Home/Home';
 import Purchase from './Pages/UserModules/Purchase/Purchase';
 import MyOrders from './Pages/UserModules/MyOrders/MyOrders';
+import MyReview from './Pages/UserModules/MyReview/MyReview';
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
           <Route index element={<WelcomePage></WelcomePage>}></Route>
           <Route path='addproduct' element={<AddProduct></AddProduct>}></Route>
           <Route path='myoders' element={<MyOrders></MyOrders>}></Route>
+          <Route path='myreview' element={<MyReview></MyReview>}></Route>
 
 
         </Route>
