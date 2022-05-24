@@ -12,8 +12,7 @@ const Header = () => {
     console.log(user)
 
     const manus = <>
-        <li><Link to='/myorders'>My Orders</Link></li>
-        <li><Link to='/myreviews'>My Reviews</Link></li>
+
         <li><Link to='/dashboard'>Dashboard</Link></li>
         {
             user ? <li><button onClick={() => signOut(auth)}>signOut</button></li> : <li><Link to='/login'>Login</Link></li>
@@ -34,7 +33,7 @@ const Header = () => {
 
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">Focus Tools</a>
+                <Link to='/' className="btn btn-ghost normal-case text-xl">Focus Tools</Link>
             </div>
             <div className="navbar-end hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">

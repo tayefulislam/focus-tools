@@ -109,6 +109,7 @@ const Purchase = () => {
 
 
         const order = {
+
             orderQuantity: minOrder,
             userName: user?.displayName,
             userEmail: user?.email,
@@ -119,7 +120,10 @@ const Purchase = () => {
             itemId: item?._id,
             date: new Date().toLocaleDateString(),
             time: new Date().toLocaleTimeString(),
-            status: 'pending'
+            status: 'pending',
+            image: item?.image,
+            name: item?.name
+
 
         }
 
