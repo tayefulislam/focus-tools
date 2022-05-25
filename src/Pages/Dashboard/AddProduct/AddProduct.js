@@ -58,7 +58,8 @@ const AddProduct = () => {
         fetch(url, {
             method: "PUT",
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                authentication: `Bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify(product)
         })

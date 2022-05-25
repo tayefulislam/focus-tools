@@ -4,7 +4,7 @@ import Product from '../Product/Product';
 
 const Products = () => {
 
-    const url = `http://localhost:5000/items`
+    const url = `http://localhost:5000/items`;
 
     const { data } = useQuery('homeItems', () => fetch(url).then(res => res.json()))
 

@@ -10,30 +10,37 @@ const ManageOrders = () => {
 
 
     const url = `http://localhost:5000/orders`
-    const { data, refetch } = useQuery('manageOrders', () => fetch(url).then(res => res.json()))
+    const { data, refetch } = useQuery('manageOrders', () => fetch(url, {
+        headers: {
+            authentication: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res => res.json()))
 
     console.log(data)
 
 
-    const handleUpdate = (id) => {
+    const handleUpdate = async (id) => {
 
 
         const url = `http://localhost:5000/order/update/${id}`;
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                authentication: `Bearer ${localStorage.getItem('accessToken')}`
 
-        axios.post(url)
-            .then(function (response) {
-
-                console.log(response);
-                if (response.data.modifiedCount > 0) {
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount > 0) {
                     toast("Item Shipped")
                     refetch()
                 }
-
-
             })
-            .catch(function (error) {
-                console.log(error);
-            });
+
+
+
 
 
     }
@@ -46,21 +53,24 @@ const ManageOrders = () => {
 
         const url = `http://localhost:5000/order/delete/${id}`;
 
-        axios.post(url)
-            .then(function (response) {
 
-                console.log(response);
-                if (response.data) {
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                authentication: `Bearer ${localStorage.getItem('accessToken')}`
+
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data) {
                     toast("Item Deleted")
                     refetch()
                     setModal(null)
                 }
-
-
             })
-            .catch(function (error) {
-                console.log(error);
-            });
+
 
 
     }

@@ -15,7 +15,12 @@ const MyReview = () => {
 
     const url = `http://localhost:5000/myreview/${user?.email}`;
 
-    const { data, isLoading, refetch } = useQuery('OnlyMyReview', () => fetch(url).then(res => res.json()))
+    const { data, isLoading, refetch } = useQuery('OnlyMyReview', () => fetch(url, {
+        headers: {
+            authentication: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+
+    }).then(res => res.json()))
 
     console.log(data?.rating)
 
@@ -38,26 +43,39 @@ const MyReview = () => {
 
         const url = `http://localhost:5000/updateReview/${user?.email}`;
 
-        axios.post(url, review)
 
-            .then(function (response) {
-                console.log(response);
 
-                if (response.data.upsertedCount > 0) {
+        fetch(url, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                authentication: `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(review)
+
+        })
+
+            .then(res => res.json())
+            .then(data => {
+
+                console.log(data)
+
+
+                if (data.upsertedCount > 0) {
                     toast.success('Review Added')
                 }
-                if (response.data.modifiedCount > 0) {
+                if (data.modifiedCount > 0) {
                     toast.success('Review Updated')
                 }
-                if (response.data.matchedCount > 0 && (response.data.modifiedCount === 0 && response.data.upsertedCount === 0)) {
+                if (data.matchedCount > 0 && (data.modifiedCount === 0 && data.upsertedCount === 0)) {
                     toast.error('Please Change Something to Update')
                 }
 
                 refetch()
+
             })
-            .catch(function (error) {
-                console.log(error);
-            });
+
+
 
     }
 

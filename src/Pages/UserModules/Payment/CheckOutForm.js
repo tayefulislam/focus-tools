@@ -30,9 +30,10 @@ const CheckoutForm = ({ item }) => {
         const url = `http://localhost:5000/create-payment-intent`;
         fetch(url, {
             method: 'POST',
-
             headers: {
                 'Content-Type': 'application/json',
+
+                authentication: `Bearer ${localStorage.getItem('accessToken')}`
 
             },
             body: JSON.stringify({ price })
@@ -110,15 +111,19 @@ const CheckoutForm = ({ item }) => {
 
             // }
 
+            console.log('item id', item?._id)
 
+            const billId = { transactionId: paymentIntent.id }
 
-            fetch(`http://localhost:5000/order/${item?._id}`, {
+            console.log(billId)
+
+            fetch(`http://localhost:5000/placeorder/${item?._id}`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
-                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
+
                 },
-                body: JSON.stringify({ transactionId: paymentIntent.id })
+                body: JSON.stringify(billId)
             })
                 .then(res => res.json())
                 .then(data => {

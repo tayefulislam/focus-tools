@@ -6,7 +6,11 @@ import { toast } from 'react-toastify';
 const ManageProducts = () => {
 
     const url = `http://localhost:5000/items`;
-    const { data, refetch } = useQuery('ManageProducts', () => fetch(url).then(res => res.json()))
+    const { data, refetch } = useQuery('ManageProducts', () => fetch(url, {
+        headers: {
+            authentication: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res => res.json()))
 
 
     const [deleteModal, setDeleteModal] = useState(null)
@@ -18,10 +22,18 @@ const ManageProducts = () => {
 
         console.log(id)
         const url = `http://localhost:5000/delete/item/${id}`;
-        axios.post(url)
-            .then(function (response) {
-                console.log(response)
-                if (response.data.deletedCount > 0) {
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                authentication: `Bearer ${localStorage.getItem('accessToken')}`
+
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.deletedCount > 0) {
 
                     toast.success('Item delete Successfuly')
                     setDeleteModal(null)
@@ -29,6 +41,7 @@ const ManageProducts = () => {
                     refetch()
                 }
             })
+
 
     }
 

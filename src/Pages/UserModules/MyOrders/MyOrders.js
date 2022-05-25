@@ -13,7 +13,11 @@ const MyOrders = () => {
     const navigate = useNavigate()
 
     const { data, refetch } = useQuery('myOrders',
-        () => fetch(url).then(res => res.json()))
+        () => fetch(url, {
+            headers: {
+                authentication: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        }).then(res => res.json()))
 
 
     console.log(data)
@@ -23,11 +27,19 @@ const MyOrders = () => {
     const handleDelete = (id) => {
 
 
-        axios.post(`http://localhost:5000/order/delete/${id}`)
-            .then(function (response) {
-                console.log(response);
 
-                if (response.data.deletedCount > 0) {
+        const url = `http://localhost:5000/order/delete/${id}`;
+
+        fetch(url, {
+            method: "POST",
+            headers: {
+                authentication: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.deletedCount > 0) {
                     setItem(null)
                     toast.success("Delete Successful")
                     refetch()
@@ -35,10 +47,6 @@ const MyOrders = () => {
 
 
             })
-            .catch(function (error) {
-                console.log(error);
-            });
-
 
 
     }
@@ -90,7 +98,7 @@ const MyOrders = () => {
 
                                 {
                                     !item?.transactionId && <button
-                                        onClick={() => navigate(`/dashboard/payment/${item?.itemId}`)} class="btn btn-success btn-xs">Pay</button>
+                                        onClick={() => navigate(`/dashboard/payment/${item?._id}`)} class="btn btn-success btn-xs">Pay</button>
                                 }
 
 

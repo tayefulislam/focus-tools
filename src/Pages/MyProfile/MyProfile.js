@@ -10,7 +10,11 @@ const MyProfile = () => {
 
     const [user, loading, error] = useAuthState(auth);
     const url = `http://localhost:5000/myprofile/${user?.email}`
-    const { data, refetch } = useQuery('myProfile', () => fetch(url)
+    const { data, refetch } = useQuery('myProfile', () => fetch(url, {
+        headers: {
+            authentication: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    })
         .then(res => res.json()))
 
     console.log(data)
@@ -32,21 +36,28 @@ const MyProfile = () => {
         console.log(userInfo)
 
         const url = `http://localhost:5000/update/myprofile/${user?.email}`
-        axios.post(url, userInfo)
-            .then(function (response) {
-                console.log(response);
 
-                if (response.data.acknowledged) {
+
+        fetch(url, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                authentication: `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(userInfo)
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+
+                if (data.acknowledged) {
                     toast.success('Profile Updated')
                     refetch()
                 }
+
+
             })
-            .catch(function (error) {
-                console.log(error);
-            });
-
-
-
 
 
     }

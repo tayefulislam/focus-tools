@@ -7,36 +7,70 @@ const ManageUser = () => {
 
     const url = `http://localhost:5000/users`
 
-    const { data, refetch } = useQuery('manageUser', () => fetch(url)
+    const { data, refetch } = useQuery('manageUser', () => fetch(url, {
+        headers: {
+            authentication: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    })
         .then(res => res.json()))
 
 
     const handleAdmin = (email) => {
         console.log(email)
         const url = `http://localhost:5000/makeAdmin/${email}`;
-        axios.post(url)
-            .then(function (response) {
-                console.log(response)
-                if (response?.data?.modifiedCount > 0) {
+
+
+        fetch(url, {
+            method: "POST",
+            headers: {
+                authentication: `Bearer ${localStorage.getItem('accessToken')}`
+            },
+
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+
+                if (data?.modifiedCount > 0) {
 
                     toast.success('Admin Successfuly')
                     refetch()
                 }
+
+
             })
+
+
+
 
     }
     const handleUser = (email) => {
         console.log(email)
         const url = `http://localhost:5000/makeUser/${email}`;
-        axios.post(url)
-            .then(function (response) {
-                console.log(response)
-                if (response?.data?.modifiedCount) {
+        fetch(url, {
+            method: "POST",
+            headers: {
+                authentication: `Bearer ${localStorage.getItem('accessToken')}`
+            },
 
-                    toast.success('User Successfuly')
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+
+                if (data?.modifiedCount) {
+
+                    toast.success('User Make Successfuly')
                     refetch()
                 }
+
+
             })
+
+
+
 
     }
 

@@ -115,7 +115,7 @@ const Purchase = () => {
 
 
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
 
         event.preventDefault()
 
@@ -143,19 +143,35 @@ const Purchase = () => {
 
         const url = `http://localhost:5000/order`;
 
-        axios.post(url, order)
-            .then(function (response) {
-                console.log(response);
+        fetch(url, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                authentication: `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(order)
 
-                if (response.data.insertedId) {
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+
+                if (data?.insertedId) {
                     toast('Your Order Success Fully Placed')
                     event.target.reset()
                 }
-            })
-            .catch(function (error) {
-                console.log(error);
 
-            });
+
+            })
+
+
+
+
+
+
+
+
+
 
 
 

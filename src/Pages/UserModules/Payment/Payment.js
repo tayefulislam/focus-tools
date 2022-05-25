@@ -18,7 +18,11 @@ const Payment = () => {
 
         const url = `http://localhost:5000/order/${id}`;
 
-        fetch(url)
+        fetch(url, {
+            headers: {
+                authentication: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 // console.log(data)
