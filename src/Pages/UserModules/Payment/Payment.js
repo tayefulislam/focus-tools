@@ -45,16 +45,14 @@ const Payment = () => {
                 </figure>
                 <div class="card-body items-center text-center">
                     <h2 class="card-title">{item?.name}</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
+
                     <p>Order Quantity : {item?.orderQuantity}</p>
                     <p>Total price : {item?.totalPrice}</p>
-                    <div class="card-actions">
-                        <button class="btn btn-primary">Buy Now</button>
-                    </div>
+
                 </div>
 
 
-                <div>
+                <div className='p-20'>
                     <Elements stripe={stripePromise}>
                         <CheckoutForm item={item} />
                     </Elements>

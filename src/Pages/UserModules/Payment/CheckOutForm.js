@@ -1,16 +1,18 @@
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 
 
-const CheckoutForm = ({ appointment }) => {
-    console.log(appointment)
+const CheckoutForm = ({ item }) => {
+    console.log(item)
 
 
 
-    const price = appointment?.price
+    const price = item?.totalPrice
 
 
 
@@ -21,15 +23,17 @@ const CheckoutForm = ({ appointment }) => {
     const [success, setSuccess] = useState('');
     const [clientSecret, setClientSecret] = useState('');
     const [transactionId, setTransactionId] = useState('');
+    const navigate = useNavigate()
 
 
     useEffect(() => {
         const url = `http://localhost:5000/create-payment-intent`;
         fetch(url, {
             method: 'POST',
+
             headers: {
                 'Content-Type': 'application/json',
-                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+
             },
             body: JSON.stringify({ price })
         })
@@ -77,8 +81,8 @@ const CheckoutForm = ({ appointment }) => {
                 payment_method: {
                     card: card,
                     billing_details: {
-                        name: appointment?.patientName,
-                        email: appointment?.patientEmail
+                        name: item?.userName,
+                        email: item?.userEmail
                     },
                 },
             })
@@ -86,6 +90,7 @@ const CheckoutForm = ({ appointment }) => {
         if (intentError) {
             setCardError(intentError.message)
             setSuccess('')
+
         }
 
         else {
@@ -93,6 +98,10 @@ const CheckoutForm = ({ appointment }) => {
             console.log(paymentIntent)
             setTransactionId(paymentIntent.id)
             setSuccess('Payment successful')
+            toast.success('Payment successful')
+            navigate('/dashboard/myoders')
+
+
 
             // srote data in database 
 
@@ -101,12 +110,15 @@ const CheckoutForm = ({ appointment }) => {
 
             // }
 
-            fetch(`http://localhost:5000/booking/${appointment?._id}`, {
-                method: "PUT",
+
+
+            fetch(`http://localhost:5000/order/${item?._id}`, {
+                method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`
-                }
+                },
+                body: JSON.stringify({ transactionId: paymentIntent.id })
             })
                 .then(res => res.json())
                 .then(data => {

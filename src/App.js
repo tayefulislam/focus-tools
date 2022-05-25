@@ -36,6 +36,7 @@ function App() {
           <Route path='payment/:id' element={<Payment></Payment>}></Route>
           <Route path='myoders' element={<MyOrders></MyOrders>}></Route>
           <Route path='myreview' element={<MyReview></MyReview>}></Route>
+          <Route path='myprofile' element={<MyProfile></MyProfile>}></Route>
 
 
         </Route>

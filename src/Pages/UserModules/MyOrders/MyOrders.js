@@ -54,6 +54,7 @@ const MyOrders = () => {
 
                         <th>Order Quantity</th>
                         <th>Total Price</th>
+                        <th>Transaction Id</th>
                         <th>Status</th>
                         <th>Action</th>
 
@@ -83,17 +84,42 @@ const MyOrders = () => {
 
                             </td>
                             <td>{item?.totalPrice}</td>
+                            <td>{item?.transactionId}</td>
                             <td>
-                                <button
-                                    onClick={() => navigate(`/dashboard/payment/${item?.itemId}`)} class="btn btn-success btn-xs">Pay</button>
+
+
+                                {
+                                    !item?.transactionId && <button
+                                        onClick={() => navigate(`/dashboard/payment/${item?.itemId}`)} class="btn btn-success btn-xs">Pay</button>
+                                }
+
+
+                                {
+                                    item?.transactionId &&
+                                    <button
+                                        class="btn btn-success btn-xs">{item?.status === "paid" ? 'Paid' : 'Shiped'}</button>
+                                }
+
+
+
+
+
+
+
 
 
                             </td>
                             <td>
-                                <label onClick={() => {
-                                    setItem(item)
 
-                                }} for="delete-modal" class="btn btn-error btn-xs ">Delete</label>
+                                {
+                                    !item?.transactionId && <label onClick={() => {
+                                        setItem(item)
+
+                                    }} for="delete-modal" class="btn btn-error btn-xs ">Delete</label>
+                                }
+
+
+
                             </td>
 
                         </tr>)
@@ -114,7 +140,7 @@ const MyOrders = () => {
                     <input type="checkbox" id="delete-modal" class="modal-toggle" />
                     <div class="modal">
                         <div class="modal-box">
-                            <h3 class="font-bold text-lg">Are you sure to detele  {item?.name} ?</h3>
+                            <h3 class="font-bold text-lg">Are you sure to detele  {item?.name} </h3>
 
                             <div class="modal-action">
                                 <button onClick={() => handleDelete(item?._id)} className='btn btn-error'> Delete</button>
