@@ -15,6 +15,7 @@ import Purchase from './Pages/UserModules/Purchase/Purchase';
 import MyOrders from './Pages/UserModules/MyOrders/MyOrders';
 import MyReview from './Pages/UserModules/MyReview/MyReview';
 import RequireAuth from './Pages/Auth/RequireAuth';
+import Payment from './Pages/UserModules/Payment/Payment';
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
         <Route path='/dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>
           <Route index element={<WelcomePage></WelcomePage>}></Route>
           <Route path='addproduct' element={<AddProduct></AddProduct>}></Route>
+          <Route path='payment/:id' element={<Payment></Payment>}></Route>
           <Route path='myoders' element={<MyOrders></MyOrders>}></Route>
           <Route path='myreview' element={<MyReview></MyReview>}></Route>
 

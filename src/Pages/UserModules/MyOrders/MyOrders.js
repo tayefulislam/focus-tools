@@ -4,17 +4,20 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const MyOrders = () => {
     const [user, loading, error] = useAuthState(auth);
     const url = `http://localhost:5000/orders/${user?.email}`;
-    const [item, setItem] = useState(null)
+    const [item, setItem] = useState(null);
+    const navigate = useNavigate()
 
     const { data, refetch } = useQuery('myOrders',
         () => fetch(url).then(res => res.json()))
 
 
     console.log(data)
+
 
 
     const handleDelete = (id) => {
@@ -52,6 +55,7 @@ const MyOrders = () => {
                         <th>Order Quantity</th>
                         <th>Total Price</th>
                         <th>Status</th>
+                        <th>Action</th>
 
                     </tr>
                 </thead>
@@ -79,14 +83,19 @@ const MyOrders = () => {
 
                             </td>
                             <td>{item?.totalPrice}</td>
-                            <th>
-                                <button class="btn btn-success btn-xs">Pay</button>
+                            <td>
+                                <button
+                                    onClick={() => navigate(`/dashboard/payment/${item?.itemId}`)} class="btn btn-success btn-xs">Pay</button>
 
+
+                            </td>
+                            <td>
                                 <label onClick={() => {
                                     setItem(item)
 
                                 }} for="delete-modal" class="btn btn-error btn-xs ">Delete</label>
-                            </th>
+                            </td>
+
                         </tr>)
                     }
 
