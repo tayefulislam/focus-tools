@@ -17,7 +17,7 @@ const ManageUser = () => {
         axios.post(url)
             .then(function (response) {
                 console.log(response)
-                if (response?.data?.modifiedCount) {
+                if (response?.data?.modifiedCount > 0) {
 
                     toast.success('Admin Successfuly')
                     refetch()
