@@ -23,6 +23,8 @@ import RequireAdmin from './Pages/Auth/RequireAdmin';
 import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
 import NotFound from './Pages/Shared/Header/NotFound';
 import Footer from './Pages/Shared/Footer'
+import AddBlog from './Pages/Dashboard/AddBlog';
+import Blogs from './Pages/Blogs/Blogs';
 
 function App() {
 
@@ -48,13 +50,17 @@ function App() {
 
           <Route path='addproduct' element={<RequireAdmin><AddProduct></AddProduct></RequireAdmin>}></Route>
           <Route path='manageuser' element={<RequireAdmin><ManageUser></ManageUser></RequireAdmin>}></Route>
+
           <Route path='manageOrders' element={<RequireAdmin><ManageOrders></ManageOrders></RequireAdmin>}></Route>
+
           <Route path='manageProducts' element={<RequireAdmin><ManageProducts></ManageProducts></RequireAdmin>}></Route>
+          <Route path='addBlog' element={<RequireAdmin><AddBlog></AddBlog></RequireAdmin>}></Route>
 
 
 
         </Route>
         <Route path='myportfolio' element={<MyPortfolio></MyPortfolio>}></Route>
+        <Route path='blogs' element={<Blogs></Blogs>}></Route>
         <Route path='signup' element={<Register></Register>}></Route>
         <Route path='login' element={<Login></Login>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>

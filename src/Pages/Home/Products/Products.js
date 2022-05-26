@@ -1,12 +1,17 @@
 import React from 'react';
 import { useQuery } from 'react-query';
+import Loading from '../../Shared/Loading/Loading';
 import Product from '../Product/Product';
 
 const Products = () => {
 
     const url = `https://vast-springs-92836.herokuapp.com/items`;
 
-    const { data } = useQuery('homeItems', () => fetch(url).then(res => res.json()))
+    const { isLoading, data } = useQuery('homeItems', () => fetch(url).then(res => res.json()))
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
 
     console.log(data)
 

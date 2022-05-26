@@ -228,8 +228,13 @@ const Purchase = () => {
                             minOrder < item?.minQrderQuantity && <p className='text-error text-xl font-bold'>Input Value can't be less than Min. Order Quantity </p>
                         }
                         {
+                            !minOrder && <p className='text-error text-xl font-bold'>Please type your order quantity</p>
+                        }
+                        {
                             minOrder > item?.quantity && <p className='text-error text-xl font-bold'>Input Value can't be grater than Availble Quantity</p>
                         }
+
+
 
                     </div>
 

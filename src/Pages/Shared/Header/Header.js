@@ -15,6 +15,7 @@ const Header = () => {
 
         <li className='text-2xl font-semibold'><Link to='/dashboard'>Dashboard</Link></li>
         <li className='text-2xl font-semibold'><Link to='/myportfolio'>My Portfolio</Link></li>
+        <li className='text-2xl font-semibold'><Link to='/blogs'>Blogs</Link></li>
         {
             user ? <li className='text-2xl font-semibold'><button onClick={() => signOut(auth)}>Sign Out</button></li> : <li className='text-2xl font-semibold'><Link to='/login'>Login</Link></li>
         }
