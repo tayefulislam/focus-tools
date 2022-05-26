@@ -6,7 +6,7 @@ import auth from '../../../firebase.init';
 import useToken from '../../../hooks/useToken';
 
 const Register = () => {
-
+    let allErrors;
 
     const [
         createUserWithEmailAndPassword,
@@ -14,6 +14,7 @@ const Register = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
+
 
 
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -28,6 +29,10 @@ const Register = () => {
     let navigate = useNavigate();
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
+
+    if (error || gError) {
+        allErrors = `${error?.message || gError?.message}`
+    }
 
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -51,7 +56,7 @@ const Register = () => {
 
 
     return (
-        <div className='flex justify-center items-center '>
+        <div className='flex justify-center items-center mb-10 '>
             <div className="card w-96 bg-gray-200 shadow-xl">
                 <div className="card-body ">
                     <h2 className="text-center text-2xl font-bold">Sign Up</h2>
@@ -140,7 +145,7 @@ const Register = () => {
 
                                     minLength: {
                                         value: 6,
-                                        message: 'Plase Provied A password whice content more than 6 letter'
+                                        message: 'Plase Provied A password whice content more than 6 character'
                                     }
                                 })}
 
@@ -157,12 +162,23 @@ const Register = () => {
                         </div>
 
 
-                        {/* {allErrors} */}
 
-                        <input className='btn  w-full max-w-xs' type="submit" value="Login" />
+                        {allErrors}
+
+
+                        <h1 className='text-center font-bold mb-1'>
+
+                            {
+                                (loading || gLoading) && 'Loading...'
+                            }
+
+
+                        </h1>
+
+                        <input className='btn  w-full max-w-xs' type="submit" value="Signup" />
                     </form>
 
-                    <p className='text-lg'><small>Already Have Account? <Link className='text-secondary' to='/login'>Login</Link ></small></p>
+                    <p className='text-lg'><small>Already Have Account? <Link className='text-error font-semibold' to='/login'>Login</Link ></small></p>
 
 
 
@@ -172,9 +188,7 @@ const Register = () => {
 
 
                     <button onClick={() => signInWithGoogle()} className="btn btn-outline">CONTINUE WITH GOOGLE</button>
-                    <button className="btn btn-outline">CONTINUE WITH GITHUB</button>
 
-                    {/* <button onClick={() => signInWithGoogle()} className="btn btn-outline">CONTINUE WITH GOOGLE</button> */}
 
 
 

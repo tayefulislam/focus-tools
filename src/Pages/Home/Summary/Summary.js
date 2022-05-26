@@ -8,7 +8,7 @@ const Summary = () => {
     const [totalOrders, setTotalOrders] = useState([])
     const [totalShipped, setTotalShipped] = useState([])
 
-    const url = `http://localhost:5000/items`;
+    const url = `https://vast-springs-92836.herokuapp.com/items`;
 
     useEffect(() => {
         fetch(url)
@@ -24,7 +24,7 @@ const Summary = () => {
     }, [])
 
 
-    const urlOrders = `http://localhost:5000/totalOrder`;
+    const urlOrders = `https://vast-springs-92836.herokuapp.com/totalOrder`;
 
     useEffect(() => {
         fetch(urlOrders)
@@ -39,7 +39,7 @@ const Summary = () => {
             })
     }, [])
 
-    const urlShipped = `http://localhost:5000/totalShipped`;
+    const urlShipped = `https://vast-springs-92836.herokuapp.com/totalShipped`;
 
     useEffect(() => {
         fetch(urlShipped)

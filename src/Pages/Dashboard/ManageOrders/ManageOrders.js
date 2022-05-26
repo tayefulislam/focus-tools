@@ -9,7 +9,7 @@ const ManageOrders = () => {
     const [modal, setModal] = useState(null);
 
 
-    const url = `http://localhost:5000/orders`
+    const url = `https://vast-springs-92836.herokuapp.com/orders`
     const { data, refetch } = useQuery('manageOrders', () => fetch(url, {
         headers: {
             authentication: `Bearer ${localStorage.getItem('accessToken')}`
@@ -22,7 +22,7 @@ const ManageOrders = () => {
     const handleUpdate = async (id) => {
 
 
-        const url = `http://localhost:5000/order/update/${id}`;
+        const url = `https://vast-springs-92836.herokuapp.com/order/update/${id}`;
         fetch(url, {
             method: 'POST',
             headers: {
@@ -51,7 +51,7 @@ const ManageOrders = () => {
 
 
 
-        const url = `http://localhost:5000/order/delete/${id}`;
+        const url = `https://vast-springs-92836.herokuapp.com/order/delete/${id}`;
 
 
         fetch(url, {

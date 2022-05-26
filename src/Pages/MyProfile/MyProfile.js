@@ -9,7 +9,7 @@ const MyProfile = () => {
 
 
     const [user, loading, error] = useAuthState(auth);
-    const url = `http://localhost:5000/myprofile/${user?.email}`
+    const url = `https://vast-springs-92836.herokuapp.com/myprofile/${user?.email}`
     const { data, refetch } = useQuery('myProfile', () => fetch(url, {
         headers: {
             authentication: `Bearer ${localStorage.getItem('accessToken')}`
@@ -35,7 +35,7 @@ const MyProfile = () => {
 
         console.log(userInfo)
 
-        const url = `http://localhost:5000/update/myprofile/${user?.email}`
+        const url = `https://vast-springs-92836.herokuapp.com/update/myprofile/${user?.email}`
 
 
         fetch(url, {

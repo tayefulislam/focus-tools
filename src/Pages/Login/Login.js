@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -7,6 +7,7 @@ import useToken from '../../hooks/useToken';
 
 const Login = () => {
 
+    let allErrors;
     const [
         signInWithEmailAndPassword,
         user,
@@ -17,6 +18,8 @@ const Login = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
 
+
+
     const [token] = useToken(user || gUser)
 
     let navigate = useNavigate();
@@ -24,7 +27,9 @@ const Login = () => {
     let from = location.state?.from?.pathname || "/";
 
 
-
+    if (error || gError) {
+        allErrors = `${error?.message || gError?.message}`
+    }
 
 
 
@@ -57,7 +62,7 @@ const Login = () => {
 
 
     return (
-        <div className='flex justify-center items-center h-screen'>
+        <div className='flex justify-center items-center mb-10'>
             <div className="card w-96 bg-gray-200 shadow-xl">
                 <div className="card-body ">
                     <h2 className="text-center text-2xl font-bold">Login</h2>
@@ -117,7 +122,7 @@ const Login = () => {
 
                                     minLength: {
                                         value: 6,
-                                        message: 'Plase Provied A password whice content more than 6 letter'
+                                        message: 'Please Provied A password whice content equal or more than 6 character'
                                     }
                                 })}
 
@@ -134,12 +139,22 @@ const Login = () => {
                         </div>
 
 
-                        {/* {allErrors} */}
+                        {allErrors}
+
+
+                        <h1 className='text-center font-bold mb-1'>
+
+                            {
+                                (loading || gLoading) && 'Loading...'
+                            }
+
+
+                        </h1>
 
                         <input className='btn  w-full max-w-xs' type="submit" value="Login" />
                     </form>
 
-                    <p className='text-lg'><small>Already Have Account? <Link className='text-secondary' to='/signup'>Sign Up</Link ></small></p>
+                    <p className='text-lg'><small>Already Have Account? <Link className='text-error font-semibold' to='/signup'>Sign Up</Link ></small></p>
 
 
 
@@ -150,9 +165,7 @@ const Login = () => {
 
                     <button onClick={() => signInWithGoogle()} className="btn btn-outline">CONTINUE WITH GOOGLE</button>
 
-                    <button className="btn btn-outline">CONTINUE WITH GITHUB</button>
 
-                    {/* <button onClick={() => signInWithGoogle()} className="btn btn-outline">CONTINUE WITH GOOGLE</button> */}
 
 
 

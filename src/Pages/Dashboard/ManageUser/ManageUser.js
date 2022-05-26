@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 const ManageUser = () => {
 
-    const url = `http://localhost:5000/users`
+    const url = `https://vast-springs-92836.herokuapp.com/users`
 
     const { data, refetch } = useQuery('manageUser', () => fetch(url, {
         headers: {
@@ -17,7 +17,7 @@ const ManageUser = () => {
 
     const handleAdmin = (email) => {
         console.log(email)
-        const url = `http://localhost:5000/makeAdmin/${email}`;
+        const url = `https://vast-springs-92836.herokuapp.com/makeAdmin/${email}`;
 
 
         fetch(url, {
@@ -47,7 +47,7 @@ const ManageUser = () => {
     }
     const handleUser = (email) => {
         console.log(email)
-        const url = `http://localhost:5000/makeUser/${email}`;
+        const url = `https://vast-springs-92836.herokuapp.com/makeUser/${email}`;
         fetch(url, {
             method: "POST",
             headers: {

@@ -21,7 +21,7 @@ const Payment = () => {
 
     useEffect(() => {
 
-        const url = `http://localhost:5000/order/${id}`;
+        const url = `https://vast-springs-92836.herokuapp.com/order/${id}`;
 
         fetch(url, {
             headers: {

@@ -53,7 +53,7 @@ const AddProduct = () => {
         }
 
         console.log(product)
-        const url = `http://localhost:5000/additem`;
+        const url = `https://vast-springs-92836.herokuapp.com/additem`;
 
         fetch(url, {
             method: "PUT",
