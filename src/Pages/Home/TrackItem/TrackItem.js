@@ -45,7 +45,7 @@ const TrackItem = () => {
 
 
     return (
-        < div className='track-item'>
+        < div className='track-item mt-10'>
 
             <h1 className='text-center text-4xl text-white'>Track Item</h1>
 
@@ -71,6 +71,8 @@ const TrackItem = () => {
 
 
             <div>
+
+                <img className='w-48 mx-auto rounded-full' src={trackItem?.image} alt="" />
 
                 <h1 className='text-center text-white text-bold'>{trackItem?.name}</h1>
                 <h1 className='text-center text-white text-bold'> Availble Quantity :{trackItem?.quantity}</h1>
