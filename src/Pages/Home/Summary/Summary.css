@@ -1,8 +1,15 @@
 .count {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    font-size: 20px;
+
+}
+
+
+.summary {
+
     text-align: center;
-    background-color: #1DC68C;
+    background-color: #605ac2;
     padding: 30px;
     border-radius: 20px;
     color: aliceblue;

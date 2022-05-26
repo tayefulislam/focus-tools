@@ -66,34 +66,52 @@ const Summary = () => {
 
 
     return (
-        <div className='container count mt-5'>
 
-            <div>
-                <h2>Total Item</h2>
-                <CountUp className='text-dark fs-1'
-                    start={0}
-                    end={items.length}
-                    duration={3}> </CountUp>
+        <>
+
+
+            <div className='summary mt-5'>
+
+                <h1 className='text-4xl'>Business Summary</h1>
+
+                <div className='count mt-2'>
+
+
+
+                    <div>
+                        <h2>Total Item</h2>
+                        <CountUp className='text-dark fs-1'
+                            start={0}
+                            end={items.length}
+                            duration={3}></CountUp>
+                        +
+                    </div>
+                    <div>
+                        <h2>Total Orders</h2>
+                        <CountUp className='text-dark fs-1'
+                            start={0}
+                            end={totalOrders.length}
+                            duration={3}> </CountUp>
+                        +
+                    </div>
+
+                    <div>
+                        <h2>Total Delivered</h2>
+                        <CountUp className='text-dark fs-1'
+                            start={0}
+                            end={totalShipped.length}
+                            duration={3}> </CountUp>
+                        +
+                    </div>
+
+
+
+                </div>
+
             </div>
-            <div>
-                <h2>Total Orders</h2>
-                <CountUp className='text-dark fs-1'
-                    start={0}
-                    end={totalOrders.length}
-                    duration={3}> </CountUp>
-            </div>
 
-            <div>
-                <h2>Total Delivered</h2>
-                <CountUp className='text-dark fs-1'
-                    start={0}
-                    end={totalShipped.length}
-                    duration={3}> </CountUp>
-            </div>
+        </>
 
-
-
-        </div>
     );
 };
 
