@@ -18,6 +18,7 @@ const Product = ({ item }) => {
                 <p>Min. Order Quantity : {item?.minQrderQuantity}</p>
                 <p>Availble Quantity : {item?.quantity}</p>
                 <p>Unit Price: {item?.unitPrice}</p>
+                <p>Track ID: {item?.trackId}</p>
 
                 <div className="card-actions">
                     <button onClick={() => navigate(`/item/${item?._id}`)} className="btn btn-primary">Purchase</button>
