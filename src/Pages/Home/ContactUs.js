@@ -1,6 +1,46 @@
+import axios from 'axios';
 import React from 'react';
+import { toast } from 'react-toastify';
 
 const ContactUs = () => {
+
+
+
+    const handleSubmit = (event) => {
+
+        event.preventDefault()
+
+        const message = {
+            email: event.target.email.value,
+            message: event.target.message.value,
+            number: event.target.number.value,
+
+        }
+
+        const url = `http://localhost:5000/contactForm`
+
+
+        axios.post(url, message)
+            .then(function (response) {
+                console.log(response);
+                if (response.data.insertedId) {
+                    toast.success('Your Message SuccessFuly Submited,You Reach You ASAP')
+                    event.target.reset()
+                }
+
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+        console.log(message)
+
+
+
+    }
+
+
     return (
 
         <div className='flex justify-center items-center my-12'>
@@ -9,7 +49,7 @@ const ContactUs = () => {
                     <h2 className="text-center text-2xl font-bold">Contact Us</h2>
 
 
-                    <form>
+                    <form onSubmit={handleSubmit}>
 
 
                         <div className="form-control w-full max-w-xs">
