@@ -223,6 +223,16 @@ const Purchase = () => {
 
                     </div>
 
+                    <div>
+                        {
+                            minOrder < item?.minQrderQuantity && <p className='text-error text-xl font-bold'>Input Value can't be less than Min. Order Quantity </p>
+                        }
+                        {
+                            minOrder > item?.quantity && <p className='text-error text-xl font-bold'>Input Value can't be grater than Availble Quantity</p>
+                        }
+
+                    </div>
+
                     <div className='flex justify-center items-center h-screen'>
 
                         <div className='card w-96 bg-gray-200 shadow-xl'>
@@ -295,6 +305,7 @@ const Purchase = () => {
 
 
                                 </form>
+
                             </div>
                         </div>
 
