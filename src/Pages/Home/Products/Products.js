@@ -17,7 +17,7 @@ const Products = () => {
 
             <div className='grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-3 mx-4 lg:mx-12 '>
                 {
-                    data?.map(item => <Product
+                    data?.slice(0, 6).map(item => <Product
                         key={item?._id}
                         item={item}></Product>)
                 }
