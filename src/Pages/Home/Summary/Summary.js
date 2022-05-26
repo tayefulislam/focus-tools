@@ -81,19 +81,19 @@ const Summary = () => {
 
                     <div>
                         <h2>Total Item</h2>
-                        <CountUp className='text-dark fs-1'
+                        <CountUp className='text-dark fs-3'
                             start={0}
                             end={items.length}
                             duration={3}></CountUp>
-                        +
+                        <i class="fa-solid fa-plus"></i>
                     </div>
                     <div>
                         <h2>Total Orders</h2>
-                        <CountUp className='text-dark fs-1'
+                        <CountUp className='text-dark fs-3'
                             start={0}
                             end={totalOrders.length}
                             duration={3}> </CountUp>
-                        +
+                        <i class="fa-solid fa-plus"></i>
                     </div>
 
                     <div>
@@ -102,7 +102,7 @@ const Summary = () => {
                             start={0}
                             end={totalShipped.length}
                             duration={3}> </CountUp>
-                        +
+                        <i class="fa-solid fa-plus"></i>
                     </div>
 
 
