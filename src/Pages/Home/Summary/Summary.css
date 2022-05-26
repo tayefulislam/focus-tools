@@ -1,0 +1,19 @@
+.count {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+    background-color: #1DC68C;
+    padding: 30px;
+    border-radius: 20px;
+    color: aliceblue;
+}
+
+
+@media screen and (max-width:500px) {
+
+    .count {
+
+        grid-template-columns: repeat(1, 1fr);
+
+    }
+}
