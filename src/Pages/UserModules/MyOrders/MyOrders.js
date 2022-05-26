@@ -52,8 +52,8 @@ const MyOrders = () => {
     }
 
     return (
-        <div class="overflow-x-auto w-full mt-20">
-            <table class="table w-full">
+        <div className="overflow-x-auto w-full mt-20">
+            <table className="table w-full">
 
                 <thead>
                     <tr>
@@ -72,12 +72,12 @@ const MyOrders = () => {
 
 
                     {
-                        data?.map(item => <tr>
+                        data?.map(item => <tr key={item?._id}>
 
                             <td>
-                                <div class="flex items-center space-x-3">
-                                    <div class="avatar">
-                                        <div class="mask mask-squircle w-full h-12">
+                                <div className="flex items-center space-x-3">
+                                    <div className="avatar">
+                                        <div className="mask mask-squircle w-full h-12">
                                             <img src={item?.image} alt={item?.name} />
                                         </div>
                                     </div>
@@ -98,14 +98,14 @@ const MyOrders = () => {
 
                                 {
                                     !item?.transactionId && <button
-                                        onClick={() => navigate(`/dashboard/payment/${item?._id}`)} class="btn btn-success btn-xs">Pay</button>
+                                        onClick={() => navigate(`/dashboard/payment/${item?._id}`)} className="btn btn-success btn-xs">Pay</button>
                                 }
 
 
                                 {
                                     item?.transactionId &&
                                     <button
-                                        class="btn btn-success btn-xs">{item?.status === "paid" ? 'Paid' : 'Shiped'}</button>
+                                        className="btn btn-success btn-xs">{item?.status === "paid" ? 'Paid' : 'Shiped'}</button>
                                 }
 
 
@@ -123,7 +123,7 @@ const MyOrders = () => {
                                     !item?.transactionId && <label onClick={() => {
                                         setItem(item)
 
-                                    }} for="delete-modal" class="btn btn-error btn-xs ">Delete</label>
+                                    }} for="delete-modal" className="btn btn-error btn-xs ">Delete</label>
                                 }
 
 
@@ -145,14 +145,14 @@ const MyOrders = () => {
 
             {
                 item && <>
-                    <input type="checkbox" id="delete-modal" class="modal-toggle" />
-                    <div class="modal">
-                        <div class="modal-box">
-                            <h3 class="font-bold text-lg">Are you sure to detele  {item?.name} </h3>
+                    <input type="checkbox" id="delete-modal" className="modal-toggle" />
+                    <div className="modal">
+                        <div className="modal-box">
+                            <h3 className="font-bold text-lg">Are you sure to detele  {item?.name} </h3>
 
-                            <div class="modal-action">
+                            <div className="modal-action">
                                 <button onClick={() => handleDelete(item?._id)} className='btn btn-error'> Delete</button>
-                                <label for="delete-modal" class="btn">Close</label>
+                                <label for="delete-modal" className="btn">Close</label>
                             </div>
                         </div>
                     </div></>

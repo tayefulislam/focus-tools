@@ -76,8 +76,8 @@ const ManageUser = () => {
 
     console.log(data)
     return (
-        <div class="overflow-x-auto">
-            <table class="table w-full">
+        <div className="overflow-x-auto">
+            <table className="table w-full">
 
                 <thead>
                     <tr>
@@ -92,7 +92,7 @@ const ManageUser = () => {
 
                     {
 
-                        data?.map((user, index) => <tr class="hover">
+                        data?.map((user, index) => <tr key={index} className="hover">
                             <th>{index + 1}</th>
                             <td>{user?.userEmail}</td>
 

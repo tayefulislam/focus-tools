@@ -188,14 +188,14 @@ const Purchase = () => {
 
 
 
-        <div class="card w-full bg-base-100 shadow-xl">
+        <div className="card w-full bg-base-100 shadow-xl">
             <figure><img src={item?.image} alt="Shoes" /></figure>
 
 
-            <div class="card-body text-center">
-                <h2 class="text-2xl">
+            <div className="card-body text-center">
+                <h2 className="text-2xl">
                     {item?.name}
-                    <div class="badge badge-secondary h-12">price {item?.unitPrice}</div>
+                    <div className="badge badge-secondary h-12">price {item?.unitPrice}</div>
                 </h2>
                 <p>{item?.description}</p>
 
@@ -209,7 +209,7 @@ const Purchase = () => {
 
                         <input onChange={handleChange} type="number" value={minOrder} placeholder="Type here"
 
-                            class="input input-bordered input-secondary w-full max-w-xs" />
+                            className="input input-bordered input-secondary w-full max-w-xs" />
 
                     </div>
 

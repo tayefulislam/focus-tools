@@ -15,7 +15,7 @@ const MyReview = () => {
 
     const url = `http://localhost:5000/myreview/${user?.email}`;
 
-    const { data, isLoading, refetch } = useQuery('OnlyMyReview', () => fetch(url, {
+    const { data, isLoading, refetch } = useQuery('onlyMyReview', () => fetch(url, {
         headers: {
             authentication: `Bearer ${localStorage.getItem('accessToken')}`
         }
@@ -100,16 +100,16 @@ const MyReview = () => {
 
 
 
-                    <div class="rating  flex justify-center items-center ">
-                        <input type="radio" name="rating-1" class="mask mask-star" onClick={() => setRating(1)} defaultChecked={rating === 1} />
-                        <input type="radio" name="rating-1" class="mask mask-star" onClick={() => setRating(2)} defaultChecked={rating === 2} />
-                        <input type="radio" name="rating-1" class="mask mask-star" onClick={() => setRating(3)} defaultChecked={rating === 3} />
-                        <input type="radio" name="rating-1" class="mask mask-star" onClick={() => setRating(4)} defaultChecked={rating === 4} />
-                        <input type="radio" name="rating-1" class="mask mask-star" onClick={() => setRating(5)} defaultChecked={rating === 5} />
+                    <div className="rating  flex justify-center items-center ">
+                        <input type="radio" name="rating-1" className="mask mask-star" onClick={() => setRating(1)} defaultChecked={rating === 1} />
+                        <input type="radio" name="rating-1" className="mask mask-star" onClick={() => setRating(2)} defaultChecked={rating === 2} />
+                        <input type="radio" name="rating-1" className="mask mask-star" onClick={() => setRating(3)} defaultChecked={rating === 3} />
+                        <input type="radio" name="rating-1" className="mask mask-star" onClick={() => setRating(4)} defaultChecked={rating === 4} />
+                        <input type="radio" name="rating-1" className="mask mask-star" onClick={() => setRating(5)} defaultChecked={rating === 5} />
                     </div>
 
 
-                    <textarea type="text" name='review' placeholder="Your Review" defaultValue={data?.myReview} class="input input-bordered input-error w-full lg:w-96 max-w-xs mt-4" />
+                    <textarea type="text" name='review' placeholder="Your Review" defaultValue={data?.myReview} className="input input-bordered input-error w-full lg:w-96 max-w-xs mt-4" />
                     <br />
 
                     {

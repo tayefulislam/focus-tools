@@ -43,12 +43,12 @@ const Payment = () => {
 
 
         <div className='flex justify-center items-center'>
-            <div class="card w- bg-base-100 shadow-xl">
-                <figure class="px-10 pt-10">
-                    <img className='w-48' src={item?.image} alt={item?.name} class="rounded-xl" />
+            <div className="card w- bg-base-100 shadow-xl">
+                <figure className="px-10 pt-10">
+                    <img className='w-48' src={item?.image} alt={item?.name} />
                 </figure>
-                <div class="card-body items-center text-center">
-                    <h2 class="card-title">{item?.name}</h2>
+                <div className="card-body items-center text-center">
+                    <h2 className="card-title">{item?.name}</h2>
 
                     <p>Order Quantity : {item?.orderQuantity}</p>
                     <p>Total price : {item?.totalPrice}</p>

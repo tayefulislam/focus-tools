@@ -46,8 +46,8 @@ const ManageProducts = () => {
     }
 
     return (
-        <div class="overflow-x-auto">
-            <table class="table table-zebra w-full">
+        <div className="overflow-x-auto">
+            <table className="table table-zebra w-full">
 
                 <thead>
                     <tr>
@@ -61,7 +61,7 @@ const ManageProducts = () => {
 
 
                     {
-                        data?.map((item, index) => <tr>
+                        data?.map((item, index) => <tr key={index}>
                             <th>{index + 1}</th>
                             <td>{item?.name}</td>
                             <td>
@@ -70,7 +70,7 @@ const ManageProducts = () => {
 
                                 <label
                                     onClick={() => setDeleteModal(item)}
-                                    for="item-delete-modal" class="btn modal-button btn-error btn-xs">Delete</label>
+                                    for="item-delete-modal" className="btn modal-button btn-error btn-xs">Delete</label>
 
                             </td>
 
@@ -88,17 +88,17 @@ const ManageProducts = () => {
             {
                 deleteModal && <>
 
-                    <input type="checkbox" id="item-delete-modal" class="modal-toggle" />
-                    <div class="modal modal-middle">
-                        <div class="modal-box">
-                            <h3 class="font-bold text-lg">Are you want to delete {deleteModal?.name} ?</h3>
+                    <input type="checkbox" id="item-delete-modal" className="modal-toggle" />
+                    <div className="modal modal-middle">
+                        <div className="modal-box">
+                            <h3 className="font-bold text-lg">Are you want to delete {deleteModal?.name} ?</h3>
 
-                            <div class="modal-action">
+                            <div className="modal-action">
                                 <button
                                     onClick={() => handelDelete(deleteModal?._id)}
                                     className='btn btn-error text-white'>YES,Delete !</button>
 
-                                <label for="item-delete-modal" class="btn">Cancel</label>
+                                <label for="item-delete-modal" className="btn">Cancel</label>
                             </div>
                         </div>
                     </div>

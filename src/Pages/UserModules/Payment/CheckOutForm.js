@@ -12,7 +12,7 @@ const CheckoutForm = ({ item }) => {
 
 
 
-    const price = item?.totalPrice
+    const price = item?.totalPrice || 0
 
 
 

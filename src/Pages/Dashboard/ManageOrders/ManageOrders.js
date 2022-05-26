@@ -77,8 +77,8 @@ const ManageOrders = () => {
 
 
     return (
-        <div class="overflow-x-auto">
-            <table class="table table-compact w-full">
+        <div className="overflow-x-auto">
+            <table className="table table-compact w-full">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -96,7 +96,7 @@ const ManageOrders = () => {
 
 
                     {
-                        data?.map((order, index) => <tr>
+                        data?.map((order, index) => <tr key={index}>
 
                             <th>{index + 1}</th>
                             <td>{order?.name}</td>
@@ -117,8 +117,8 @@ const ManageOrders = () => {
 
                                 {
                                     order?.transactionId ? <button
-                                        onClick={() => handleUpdate(order?._id)} disabled={order?.status === 'shipped'} class="btn btn-xs btn-success">Shipped</button> : <label for="manage-order-delete"
-                                            onClick={() => { setModal(order) }} class="btn btn-xs btn-error" >Cancel</label>
+                                        onClick={() => handleUpdate(order?._id)} disabled={order?.status === 'shipped'} className="btn btn-xs btn-success">Shipped</button> : <label for="manage-order-delete"
+                                            onClick={() => { setModal(order) }} className="btn btn-xs btn-error" >Cancel</label>
                                 }
 
 
@@ -148,16 +148,16 @@ const ManageOrders = () => {
             {modal && <>
 
 
-                <input type="checkbox" id="manage-order-delete" class="modal-toggle" />
-                <div class="modal modal-bottom sm:modal-middle">
-                    <div class="modal-box">
-                        <h3 class="font-bold text-lg"> Are you sure to detele {modal?.name} ?</h3>
+                <input type="checkbox" id="manage-order-delete" className="modal-toggle" />
+                <div className="modal modal-bottom sm:modal-middle">
+                    <div className="modal-box">
+                        <h3 className="font-bold text-lg"> Are you sure to detele {modal?.name} ?</h3>
 
-                        <div class="modal-action">
+                        <div className="modal-action">
 
                             <button className='btn btn-error' onClick={() => handleDelete(modal?._id)}>Delete</button>
 
-                            <label for="manage-order-delete" class="btn">Cancel</label>
+                            <label for="manage-order-delete" className="btn">Cancel</label>
                         </div>
                     </div>
                 </div></>}
