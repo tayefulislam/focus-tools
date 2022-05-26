@@ -89,14 +89,14 @@ const ManageProducts = () => {
                 deleteModal && <>
 
                     <input type="checkbox" id="item-delete-modal" className="modal-toggle" />
-                    <div className="modal modal-middle">
-                        <div className="modal-box">
-                            <h3 className="font-bold text-lg">Are you want to delete {deleteModal?.name} ?</h3>
+                    <div className="modal bg-transparent modal-middle">
+                        <div className="modal-box ">
+                            <h3 className="font-bold text-lg ">Are you want to delete {deleteModal?.name} ?</h3>
 
                             <div className="modal-action">
                                 <button
                                     onClick={() => handelDelete(deleteModal?._id)}
-                                    className='btn btn-error text-white'>YES,Delete !</button>
+                                    className='btn  text-white'>YES,Delete !</button>
 
                                 <label for="item-delete-modal" className="btn">Cancel</label>
                             </div>

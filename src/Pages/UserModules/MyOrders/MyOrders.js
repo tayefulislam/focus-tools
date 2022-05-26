@@ -146,7 +146,7 @@ const MyOrders = () => {
             {
                 item && <>
                     <input type="checkbox" id="delete-modal" className="modal-toggle" />
-                    <div className="modal">
+                    <div className="modal bg-transparent">
                         <div className="modal-box">
                             <h3 className="font-bold text-lg">Are you sure to detele  {item?.name} </h3>
 

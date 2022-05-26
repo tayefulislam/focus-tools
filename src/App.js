@@ -20,6 +20,7 @@ import ManageUser from './Pages/Dashboard/ManageUser/ManageUser';
 import ManageOrders from './Pages/Dashboard/ManageOrders/ManageOrders';
 import ManageProducts from './Pages/Dashboard/ManageProducts/ManageProducts';
 import RequireAdmin from './Pages/Auth/RequireAdmin';
+import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
 
 function App() {
 
@@ -43,14 +44,15 @@ function App() {
           <Route path='myprofile' element={<MyProfile></MyProfile>}></Route>
 
 
-          <Route path='addproduct' element={<AddProduct></AddProduct>}></Route>
+          <Route path='addproduct' element={<RequireAdmin><AddProduct></AddProduct></RequireAdmin>}></Route>
           <Route path='manageuser' element={<RequireAdmin><ManageUser></ManageUser></RequireAdmin>}></Route>
-          <Route path='manageOrders' element={<ManageOrders></ManageOrders>}></Route>
-          <Route path='manageProducts' element={<ManageProducts></ManageProducts>}></Route>
+          <Route path='manageOrders' element={<RequireAdmin><ManageOrders></ManageOrders></RequireAdmin>}></Route>
+          <Route path='manageProducts' element={<RequireAdmin><ManageProducts></ManageProducts></RequireAdmin>}></Route>
 
 
 
         </Route>
+        <Route path='myportfolio' element={<MyPortfolio></MyPortfolio>}></Route>
         <Route path='signup' element={<Register></Register>}></Route>
         <Route path='login' element={<Login></Login>}></Route>
       </Routes>

@@ -14,6 +14,11 @@ const Payment = () => {
 
     const { id } = useParams()
 
+    const orderId = id;
+
+    console.log(orderId)
+
+
     useEffect(() => {
 
         const url = `http://localhost:5000/order/${id}`;
@@ -58,7 +63,8 @@ const Payment = () => {
 
                 <div className='p-20'>
                     <Elements stripe={stripePromise}>
-                        <CheckoutForm item={item} />
+                        <CheckoutForm item={item}
+                            orderId={orderId} />
                     </Elements>
                 </div>
             </div>

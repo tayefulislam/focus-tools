@@ -149,7 +149,7 @@ const ManageOrders = () => {
 
 
                 <input type="checkbox" id="manage-order-delete" className="modal-toggle" />
-                <div className="modal modal-bottom sm:modal-middle">
+                <div className="modal bg-transparent">
                     <div className="modal-box">
                         <h3 className="font-bold text-lg"> Are you sure to detele {modal?.name} ?</h3>
 

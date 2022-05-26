@@ -7,12 +7,17 @@ import { toast } from 'react-toastify';
 
 
 
-const CheckoutForm = ({ item }) => {
-    console.log(item)
+const CheckoutForm = ({ item, orderId }) => {
+
+
+    console.log(orderId)
 
 
 
-    const price = item?.totalPrice || 0
+
+
+
+    const price = item?.totalPrice;
 
 
 
@@ -111,16 +116,17 @@ const CheckoutForm = ({ item }) => {
 
             // }
 
-            console.log('item id', item?._id)
+            // console.log('item id', item?._id)
 
             const billId = { transactionId: paymentIntent.id }
 
             console.log(billId)
 
-            fetch(`http://localhost:5000/placeorder/${item?._id}`, {
+            fetch(`http://localhost:5000/placeorder/${orderId}`, {
                 method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
+                    'content-type': 'application/json',
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
 
                 },
                 body: JSON.stringify(billId)
