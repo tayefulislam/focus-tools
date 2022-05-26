@@ -22,6 +22,7 @@ import ManageProducts from './Pages/Dashboard/ManageProducts/ManageProducts';
 import RequireAdmin from './Pages/Auth/RequireAdmin';
 import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
 import NotFound from './Pages/Shared/Header/NotFound';
+import Footer from './Pages/Shared/Footer'
 
 function App() {
 
@@ -59,6 +60,7 @@ function App() {
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <ToastContainer></ToastContainer>
+      <Footer></Footer>
     </div>
   );
 }

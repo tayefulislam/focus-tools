@@ -51,7 +51,7 @@ const Register = () => {
 
 
     return (
-        <div className='flex justify-center items-center h-screen'>
+        <div className='flex justify-center items-center '>
             <div className="card w-96 bg-gray-200 shadow-xl">
                 <div className="card-body ">
                     <h2 className="text-center text-2xl font-bold">Sign Up</h2>
