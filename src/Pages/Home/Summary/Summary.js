@@ -72,7 +72,8 @@ const Summary = () => {
 
             <div className='summary mt-5'>
 
-                <h1 className='text-4xl'>Business Summary</h1>
+                <h1 className='text-4xl'>Business Summary
+                    <i class="fa-solid fa-circle-info w-5 m-5"></i> </h1>
 
                 <div className='count mt-2'>
 
