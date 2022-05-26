@@ -21,6 +21,7 @@ import ManageOrders from './Pages/Dashboard/ManageOrders/ManageOrders';
 import ManageProducts from './Pages/Dashboard/ManageProducts/ManageProducts';
 import RequireAdmin from './Pages/Auth/RequireAdmin';
 import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
+import NotFound from './Pages/Shared/Header/NotFound';
 
 function App() {
 
@@ -55,6 +56,7 @@ function App() {
         <Route path='myportfolio' element={<MyPortfolio></MyPortfolio>}></Route>
         <Route path='signup' element={<Register></Register>}></Route>
         <Route path='login' element={<Login></Login>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <ToastContainer></ToastContainer>
     </div>

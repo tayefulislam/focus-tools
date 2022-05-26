@@ -48,7 +48,7 @@ const Payment = () => {
 
 
         <div className='flex justify-center items-center'>
-            <div className="card w- bg-base-100 shadow-xl">
+            <div className="card w-full md:96 lg:w-96 bg-base-100 shadow-xl">
                 <figure className="px-10 pt-10">
                     <img className='w-48' src={item?.image} alt={item?.name} />
                 </figure>
@@ -61,7 +61,7 @@ const Payment = () => {
                 </div>
 
 
-                <div className='p-20'>
+                <div className='p-2 lg:p-14 '>
                     <Elements stripe={stripePromise}>
                         <CheckoutForm item={item}
                             orderId={orderId} />
