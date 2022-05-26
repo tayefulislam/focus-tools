@@ -1,3 +1,18 @@
+
+# Project Name : Focus Tools
+
+
+[Live WebSite](https://focus-tools.web.app/) : https://focus-tools.web.app/
+
+- implement JWT for secure data 
+- In Dashboard Section it will show side bar Manu based on Your Role (admin /user)
+- Use stripe for payment . you pay using your card 
+- Business Summary will show you data by calculating realtime data
+- You can write a blog and it will show you in Blogs section
+- you rate by click start icon in review section
+- Admin can change the role of  Admin and user
+- User can see his/her order the My order list
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

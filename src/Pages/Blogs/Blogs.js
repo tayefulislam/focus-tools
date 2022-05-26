@@ -4,7 +4,7 @@ import Loading from '../Shared/Loading/Loading';
 
 const Blogs = () => {
 
-    const url = `http://localhost:5000/blogs`;
+    const url = `https://vast-springs-92836.herokuapp.com/blogs`;
 
     const { isLoading, data } = useQuery('blogs', () =>
         fetch(url).then(res =>
@@ -24,10 +24,10 @@ const Blogs = () => {
 
             {
                 data?.map((blog, index) =>
-                    <div key={index} class="hero  ">
-                        <div class="hero-content text-center">
-                            <div class="w-full">
-                                <h1 class="text-3xl font-bold mb-4">{blog?.title}</h1>
+                    <div key={index} className="hero  ">
+                        <div className="hero-content text-center">
+                            <div className="w-full">
+                                <h1 className="text-3xl font-bold mb-4">{blog?.title}</h1>
                                 <p className='text-xl' > {blog?.body}</p>
 
                             </div>

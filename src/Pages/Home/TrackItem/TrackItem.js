@@ -29,9 +29,9 @@ const TrackItem = () => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/trackItem/${trackIdMain}`)
+        fetch(`https://vast-springs-92836.herokuapp.com/trackItem/${trackIdMain}`)
 
-            // fetch(`http://localhost:5000/item/${trackIdMain}`)
+            // fetch(`https://vast-springs-92836.herokuapp.com/item/${trackIdMain}`)
 
             .then(res => res.json())
             .then(data => {
@@ -54,7 +54,7 @@ const TrackItem = () => {
 
                 <div >
 
-                    <input type="text" class="input input-bordered input-accent w-full max-w-xs" name='trackid' placeholder="Tack Item by Track Id" />
+                    <input type="text" className="input input-bordered input-accent w-full max-w-xs" name='trackid' placeholder="Tack Item by Track Id" />
 
                     <input className='btn  w-full max-w-xs' type="submit" value="Track" />
 

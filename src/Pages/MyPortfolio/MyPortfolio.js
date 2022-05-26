@@ -6,23 +6,23 @@ const MyPortfolio = () => {
 
         <div className='flex justify-center items-center'>
 
-            <div class="card w-96 bg-base-100 shadow-xl">
+            <div className="card w-96 bg-base-100 shadow-xl">
 
-                <div class="card-body items-center text-center">
-                    <div class="avatar online">
-                        <div class="w-24 rounded-full">
+                <div className="card-body items-center text-center">
+                    <div className="avatar online">
+                        <div className="w-24 rounded-full">
                             <img src="https://phero-web.nyc3.cdn.digitaloceanspaces.com/website-prod-images/public/files/1640512633829.jpg" />
                         </div>
                     </div>
-                    <h2 class="card-title text-2xl font-bold">My Portfolio</h2>
-                    <h2 class="card-title text-xl ">Kazi Tayeful Islam</h2>
+                    <h2 className="card-title text-2xl font-bold">My Portfolio</h2>
+                    <h2 className="card-title text-xl ">Kazi Tayeful Islam</h2>
 
                     <p>Department of Marketing <br />
                         Khilgaon Model University<br />
                         November 2021 - Current
                     </p>
                     <p><span className='font-bold'>SKills</span> : CSS, Tailwind ,Bootstrap, JavaScript (ES6), React.js , Node.js, Express.js, MongoDB, Web Hosting.</p>
-                    <div class="card-actions">
+                    <div className="card-actions">
                         <h1 className='text-2xl'>Live Project Link</h1>
 
 

@@ -22,7 +22,7 @@ const AddBlog = () => {
 
         }
 
-        const url = `http://localhost:5000/newBlog`
+        const url = `https://vast-springs-92836.herokuapp.com/newBlog`
 
 
 

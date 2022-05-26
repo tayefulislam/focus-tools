@@ -158,6 +158,7 @@ const AddProduct = () => {
                             <input type="number"
                                 placeholder="Price"
                                 name='unitprice'
+                                required
 
                                 className="input input-bordered input-success  w-full max-w-xs" />
 
