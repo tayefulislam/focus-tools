@@ -5,7 +5,7 @@ import Product from '../Product/Product';
 
 const Products = () => {
 
-    const url = `https://vast-springs-92836.herokuapp.com/items`;
+    const url = `https://toolsapi.priyopathshala.com/items`;
 
     const { isLoading, data } = useQuery('homeItems', () => fetch(url).then(res => res.json()))
 

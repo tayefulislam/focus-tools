@@ -13,7 +13,7 @@ const MyReview = () => {
     const [user, loading, error] = useAuthState(auth);
 
 
-    const url = `https://vast-springs-92836.herokuapp.com/myreview/${user?.email}`;
+    const url = `https://toolsapi.priyopathshala.com/myreview/${user?.email}`;
 
     const { data, isLoading, refetch } = useQuery('onlyMyReview', () => fetch(url, {
         headers: {
@@ -41,7 +41,7 @@ const MyReview = () => {
         }
         console.log(review)
 
-        const url = `https://vast-springs-92836.herokuapp.com/updateReview/${user?.email}`;
+        const url = `https://toolsapi.priyopathshala.com/updateReview/${user?.email}`;
 
 
 

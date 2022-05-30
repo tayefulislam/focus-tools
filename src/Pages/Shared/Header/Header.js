@@ -20,7 +20,6 @@ const Header = () => {
             user ? <li className='text-2xl font-semibold'><button onClick={() => signOut(auth)}>Sign Out</button></li> : <li className='text-2xl font-semibold'><Link to='/login'>Login</Link></li>
         }
 
-
     </>
     return (
         <div className="navbar bg-base-100 mb-12">

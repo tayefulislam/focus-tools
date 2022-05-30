@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 const ManageProducts = () => {
 
-    const url = `https://vast-springs-92836.herokuapp.com/items`;
+    const url = `https://toolsapi.priyopathshala.com/items`;
     const { data, refetch } = useQuery('ManageProducts', () => fetch(url, {
         headers: {
             authentication: `Bearer ${localStorage.getItem('accessToken')}`
@@ -21,7 +21,7 @@ const ManageProducts = () => {
     const handelDelete = (id) => {
 
         console.log(id)
-        const url = `https://vast-springs-92836.herokuapp.com/delete/item/${id}`;
+        const url = `https://toolsapi.priyopathshala.com/delete/item/${id}`;
 
         fetch(url, {
             method: 'POST',

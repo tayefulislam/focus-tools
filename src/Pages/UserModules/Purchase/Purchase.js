@@ -22,7 +22,7 @@ const Purchase = () => {
 
     useEffect(() => {
 
-        const url = `https://vast-springs-92836.herokuapp.com/item/${id}`
+        const url = `https://toolsapi.priyopathshala.com/item/${id}`
         fetch(url, {
             headers: {
                 authentication: `Bearer ${localStorage.getItem('accessToken')}`
@@ -141,7 +141,7 @@ const Purchase = () => {
 
         console.log(order)
 
-        const url = `https://vast-springs-92836.herokuapp.com/order`;
+        const url = `https://toolsapi.priyopathshala.com/order`;
 
         fetch(url, {
             method: "POST",

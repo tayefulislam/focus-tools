@@ -8,7 +8,7 @@ const Dashboard = () => {
 
 
     const [user, loading, error] = useAuthState(auth);
-    const url = `https://vast-springs-92836.herokuapp.com/myprofile/${user?.email}`
+    const url = `https://toolsapi.priyopathshala.com/myprofile/${user?.email}`
     const { data, refetch } = useQuery('isAdmin', () => fetch(url, {
         headers: {
             authentication: `Bearer ${localStorage.getItem('accessToken')}`

@@ -5,7 +5,7 @@ const Reviews = () => {
 
 
 
-    const url = `https://vast-springs-92836.herokuapp.com/reviews`;
+    const url = `https://toolsapi.priyopathshala.com/reviews`;
 
     const { data } = useQuery('reviews', () => fetch(url).then(res => res.json()))
 

@@ -17,7 +17,7 @@ const ContactUs = () => {
 
         }
 
-        const url = `https://vast-springs-92836.herokuapp.com/contactForm`
+        const url = `https://toolsapi.priyopathshala.com/contactForm`
 
 
         axios.post(url, message)

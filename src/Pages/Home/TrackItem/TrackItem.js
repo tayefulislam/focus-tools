@@ -29,9 +29,9 @@ const TrackItem = () => {
 
     useEffect(() => {
 
-        fetch(`https://vast-springs-92836.herokuapp.com/trackItem/${trackIdMain}`)
+        fetch(`https://toolsapi.priyopathshala.com/trackItem/${trackIdMain}`)
 
-            // fetch(`https://vast-springs-92836.herokuapp.com/item/${trackIdMain}`)
+            // fetch(`https://toolsapi.priyopathshala.com/item/${trackIdMain}`)
 
             .then(res => res.json())
             .then(data => {
