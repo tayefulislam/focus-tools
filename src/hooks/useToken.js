@@ -17,7 +17,7 @@ const useToken = (user) => {
         const userInfo = { userEmail: email }
 
         if (email) {
-            const url = `https://toolsapi.priyopathshala.com/user/${email}`;
+            const url = `https://vast-springs-92836.herokuapp.com/user/${email}`;
 
             axios.put(url, userInfo)
 

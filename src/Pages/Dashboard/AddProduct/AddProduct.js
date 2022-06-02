@@ -53,7 +53,7 @@ const AddProduct = () => {
         }
 
         console.log(product)
-        const url = `https://toolsapi.priyopathshala.com/additem`;
+        const url = `https://vast-springs-92836.herokuapp.com/additem`;
 
         fetch(url, {
             method: "PUT",

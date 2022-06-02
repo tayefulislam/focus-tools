@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 const MyOrders = () => {
     const [user, loading, error] = useAuthState(auth);
-    const url = `https://toolsapi.priyopathshala.com/orders/${user?.email}`;
+    const url = `https://vast-springs-92836.herokuapp.com/orders/${user?.email}`;
     const [item, setItem] = useState(null);
     const navigate = useNavigate()
 
@@ -28,7 +28,7 @@ const MyOrders = () => {
 
 
 
-        const url = `https://toolsapi.priyopathshala.com/order/delete/${id}`;
+        const url = `https://vast-springs-92836.herokuapp.com/order/delete/${id}`;
 
         fetch(url, {
             method: "POST",

@@ -4,7 +4,7 @@ import Loading from '../Shared/Loading/Loading';
 
 const Blogs = () => {
 
-    const url = `https://toolsapi.priyopathshala.com/blogs`;
+    const url = `https://vast-springs-92836.herokuapp.com/blogs`;
 
     const { isLoading, data } = useQuery('blogs', () =>
         fetch(url).then(res =>

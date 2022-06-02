@@ -22,7 +22,7 @@ const AddBlog = () => {
 
         }
 
-        const url = `https://toolsapi.priyopathshala.com/newBlog`
+        const url = `https://vast-springs-92836.herokuapp.com/newBlog`
 
 
 

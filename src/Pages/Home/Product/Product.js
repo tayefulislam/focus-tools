@@ -7,12 +7,15 @@ const Product = ({ item }) => {
 
 
     return (
-        <div className="card w-full bg-base-100 shadow-xl">
+        <div className="card w-full bg-base-100 hover:bg-green-100 hover:shadow-xl ">
             <figure className="px-10 pt-10">
                 <img src={item?.image} alt={item?.name} className="rounded-xl" />
             </figure>
             <div className="card-body items-center text-center">
-                <h2 className="card-title">{item?.name}</h2>
+
+                <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block mb-2">
+                    <span class="relative text-white text-2xl">{item?.name}</span>
+                </span>
                 <p>{item?.description.slice(0, 200) ? `${item?.description.slice(0, 200)}...` : item?.description.slice(0, 200)}</p>
 
                 <p>Min. Order Quantity : {item?.minQrderQuantity}</p>
@@ -21,7 +24,7 @@ const Product = ({ item }) => {
                 <p>Track ID: {item?.trackId}</p>
 
                 <div className="card-actions">
-                    <button onClick={() => navigate(`/item/${item?._id}`)} className="btn btn-primary">Purchase</button>
+                    <button onClick={() => navigate(`/item/${item?._id}`)} className="btn btn-primary hover:btn-success">Purchase</button>
                 </div>
             </div>
         </div>

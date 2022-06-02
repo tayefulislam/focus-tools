@@ -12,7 +12,7 @@ const useAdmin = (user) => {
 
 
         if (email) {
-            const url = `https://toolsapi.priyopathshala.com/admin/${email}`;
+            const url = `https://vast-springs-92836.herokuapp.com/admin/${email}`;
             fetch(url, {
                 method: 'GET',
                 headers: {

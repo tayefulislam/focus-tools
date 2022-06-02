@@ -32,7 +32,7 @@ const CheckoutForm = ({ item, orderId }) => {
 
 
     useEffect(() => {
-        const url = `https://toolsapi.priyopathshala.com/create-payment-intent`;
+        const url = `https://vast-springs-92836.herokuapp.com/create-payment-intent`;
         fetch(url, {
             method: 'POST',
             headers: {
@@ -122,7 +122,7 @@ const CheckoutForm = ({ item, orderId }) => {
 
             console.log(billId)
 
-            fetch(`https://toolsapi.priyopathshala.com/placeorder/${orderId}`, {
+            fetch(`https://vast-springs-92836.herokuapp.com/placeorder/${orderId}`, {
                 method: "POST",
                 headers: {
                     'content-type': 'application/json',
